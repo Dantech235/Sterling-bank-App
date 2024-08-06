@@ -1,11 +1,16 @@
 import React, { useState } from "react";
 import SterlingLogo from "../assets/sterlingLogo.svg";
 import OptionsIcon from "../assets/optionsIcon.svg";
-import attachFileIcon from "../assets/attach-fileIcon.svg";
-import sendIcon from "../assets/sendIcon.svg";
+// import attachFileIcon from "../assets/attach-fileIcon.svg";
+// import sendIcon from "../assets/sendIcon.svg";
 import wave from "../assets/wave.svg";
+import ChatComponent from "./modalView";
 
-const ChatModal: React.FC = () => {
+interface ChatModalProps {
+  show: boolean;
+}
+
+const ChatModal: React.FC<ChatModalProps> = ({ show }) => {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -30,9 +35,13 @@ const ChatModal: React.FC = () => {
   //   });
 
   return (
-    <div className="absolute top-0 justify-end z-[100] flex pr-[50px] mt-8 h-[90vh] w-[100vw]">
-      <div className="w-[26vw] h-[80vh] rounded-lg flex flex-col z-40 bg-white">
-        <div className="w-[26vw] h-[10vh] rounded-lg flex pl-2 pr-2 justify-between items-center text-black">
+    <div
+      className={`fixed bottom-0  justify-end  flex pr-[50px]  pt-2  mt-8 h-full w-[100vw]  ${
+        show ? "" : ""
+      }`}
+    >
+      <div className=" h-[80vh] rounded-lg flex flex-col fixed z-[1000]  mt-4 bg-white">
+        <div className=" h-[10vh] gap-3 rounded-lg flex pl-2 pr-2 justify-between items-center text-black">
           <div>
             <img
               src={SterlingLogo}
@@ -40,6 +49,7 @@ const ChatModal: React.FC = () => {
               alt="Sterling Logo"
             />
           </div>
+
           <div className="flex flex-col gap-1">
             <div className="flex gap-8">
               <h1>Welcome to SterlingBot</h1>
@@ -58,36 +68,10 @@ const ChatModal: React.FC = () => {
           />
         </div>
         <hr className="bg-black w-full" />
-        <div className="h-[70vh] flex flex-col justify-end rounded">
-          <div></div>
-          <hr className="bg-black w-full" />
-          <div className="h-[50px] flex justify-center items-center gap-1">
-            <button onClick={handleClickFile}>
-              <img
-                src={attachFileIcon}
-                className="file-icon mr-3 cursor-pointer"
-                id="fileIcon"
-                alt="Attach File Icon"
-              />
-            </button>
-            <input
-              type="file"
-              id="fileInput"
-              className="hidden"
-              onChange={handleFileChange}
-            />
-            <input
-              placeholder="Type your message"
-              className="w-[250px] outline-none h-[40px]"
-            />
-            <button className="h-[40px] p-1 rounded text-white">
-              <img src={sendIcon} className="text-red-300" alt="Send Icon" />
-            </button>
-          </div>
-          <footer className="rounded flex items-center justify-center p-2 text-blue-300 text-[14px]">
-            Powered by infinion technologies
-          </footer>
-        </div>
+        <ChatComponent
+          token="bNk-pA022KQ.nwmz8OAfftifXruuPZF7bG1d4tsz7vcPNvktszvWySU"
+          userID="Daniel"
+        />
       </div>
     </div>
   );
