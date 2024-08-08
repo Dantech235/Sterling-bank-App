@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import SterlingLogo from "../assets/sterlingLogo.svg";
-import OptionsIcon from "../assets/optionsIcon.svg";
+import SterlingLogo from "../assets/svg-files/sterlingLogo.svg";
+import OptionsIcon from "../assets/svg-files/optionsIcon.svg";
 // import attachFileIcon from "../assets/attach-fileIcon.svg";
 // import sendIcon from "../assets/sendIcon.svg";
 import wave from "../assets/wave.svg";

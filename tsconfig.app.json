@@ -23,5 +23,5 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src", "src/model/Header.tsx"]
+  "include": ["src", "src/component/Header.tsx"]
 }
