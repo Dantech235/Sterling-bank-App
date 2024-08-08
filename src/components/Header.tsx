@@ -7,7 +7,7 @@ import { SignInButton } from "./utils/SignInButton";
 
 interface HeaderProps {
   show: boolean;
-  children: ReactNode;
+  children?: ReactNode;
 }
 
 const Header: React.FC<HeaderProps> = ({ show, children }) => {

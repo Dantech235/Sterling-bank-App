@@ -1,7 +1,7 @@
-// Importing the graphConfig from the authConfig file
+
 import { graphConfig } from "./AuthConfig";
 
-// Defining an interface for the user information returned by MS Graph API
+
 interface UserInfo {
   id: string;
   displayName: string;
@@ -14,7 +14,7 @@ interface UserInfo {
   officeLocation?: string;
 }
 
-// Defining the type for the callMsGraph function's parameter
+
 export async function callMsGraph(
   accessToken: string
 ): Promise<UserInfo | undefined> {

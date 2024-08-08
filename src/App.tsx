@@ -8,11 +8,12 @@ import Modal from "./components/Modal";
 import { callMsGraph } from "./configuration/graph";
 import { loginRequest } from "./configuration/AuthConfig";
 import {
-  AuthenticatedTemplate,
-  UnauthenticatedTemplate,
+  // AuthenticatedTemplate,
+  // UnauthenticatedTemplate,
   useMsal,
 } from "@azure/msal-react";
 import { ProfileData } from "./components/ProfileData";
+// import SignInPage from "./components/SignInPage";
 
 interface GraphData {
   id: string;
@@ -36,10 +37,12 @@ export const ProfileContent: React.FC = () => {
         ...loginRequest,
         account: accounts[0],
       });
+
       const data = await callMsGraph(response.accessToken);
-      setGraphData(data);
+      setGraphData(data as GraphData);
     } catch (error) {
       console.error(error);
+      setGraphData(null);
     }
   };
 
@@ -77,20 +80,23 @@ const App: React.FC = () => {
       className="flex flex-col min-h-screen"
       style={{ backgroundImage: `url(${bgImage})` }}
     >
+      {/* <AuthenticatedTemplate> */}
       <Header show={show} />
-      <AuthenticatedTemplate>
-        <ProfileContent />
 
-        <MainContent show={show} />
-      </AuthenticatedTemplate>
+      <ProfileContent />
+
+      <MainContent show={show} />
+
       <Footer handleClick={handleClick} show={show} />
       {show && <Modal show={show} onClose={handleCloseModal} />}
+      {/* </AuthenticatedTemplate> */}
 
-      <UnauthenticatedTemplate>
-        <h5 className="text-white font-bold">
-          <center>Please sign-in to see your profile information.</center>
-        </h5>
-      </UnauthenticatedTemplate>
+      {/* <UnauthenticatedTemplate> */}
+      {/* <h5 className="text-white font-bold">
+        <center>Please sign-in to see your profile information.</center>
+      </h5> */}
+      {/* <SignInPage /> */}
+      {/* </UnauthenticatedTemplate> */}
     </div>
   );
 };

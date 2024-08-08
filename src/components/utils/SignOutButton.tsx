@@ -1,5 +1,6 @@
 import React from "react";
 import { useMsal } from "@azure/msal-react";
+import { Link } from "react-router-dom";
 
 /**
  * Renders a sign out button
@@ -41,20 +42,24 @@ export const SignOutButton: React.FC = () => {
         aria-labelledby="options-menu"
       >
         <div className="py-1" role="none">
-          <button
-            className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-            role="menuitem"
-            onClick={() => handleLogout("popup")}
-          >
-            Sign out using Popup
-          </button>
-          <button
-            className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-            role="menuitem"
-            onClick={() => handleLogout("redirect")}
-          >
-            Sign out using Redirect
-          </button>
+          <Link to="/signIn">
+            <button
+              className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+              role="menuitem"
+              onClick={() => handleLogout("popup")}
+            >
+              Sign out using Popup
+            </button>
+          </Link>
+          <Link to="/signIn">
+            <button
+              className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+              role="menuitem"
+              onClick={() => handleLogout("redirect")}
+            >
+              Sign out using Redirect
+            </button>
+          </Link>
         </div>
       </div>
     </div>
