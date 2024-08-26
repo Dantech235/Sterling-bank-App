@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import SterlingLogo from "../assets/svg-files/sterlingLogo.svg";
 import OptionsIcon from "../assets/svg-files/optionsIcon.svg";
 // import attachFileIcon from "../assets/attach-fileIcon.svg";
@@ -11,21 +11,21 @@ interface ChatModalProps {
 }
 
 const ChatModal: React.FC<ChatModalProps> = ({ show }) => {
-  const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  // const [selectedFile, setSelectedFile] = useState<File | null>(null);
 
-  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files ? event.target.files[0] : null;
-    setSelectedFile(file);
-    if (file) {
-      console.log("Selected file:", file.name);
-    } else {
-      console.log("No file selected");
-    }
-  };
+  // const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  //   const file = event.target.files ? event.target.files[0] : null;
+  //   setSelectedFile(file);
+  //   if (file) {
+  //     console.log("Selected file:", file.name);
+  //   } else {
+  //     console.log("No file selected");
+  //   }
+  // };
 
-  const handleClickFile = () => {
-    document.getElementById("fileInput")?.click();
-  };
+  // const handleClickFile = () => {
+  //   document.getElementById("fileInput")?.click();
+  // };
 
   //   let fileInput = document.getElementById("fileInput");
   //   let fileIcon = document.getElementById("fileIcon");

@@ -24,15 +24,18 @@ export const SignOutButton: React.FC = () => {
   return (
     <div className="relative inline-block text-left ml-auto">
       <div>
-        <button
-          type="button"
-          className="inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none"
-          id="options-menu"
-          aria-expanded="true"
-          aria-haspopup="true"
-        >
-          Sign Out
-        </button>
+        <Link to="/">
+          <button
+            type="button"
+            className="bg-red-800 hover:bg-blue-600 text-white py-2 px-4 rounded transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-300 focus:ring-opacity-50"
+            id="options-menu"
+            aria-expanded="true"
+            aria-haspopup="true"
+            onClick={() => handleLogout("popup")}
+          >
+            Sign Out
+          </button>
+        </Link>
       </div>
 
       <div
@@ -40,28 +43,7 @@ export const SignOutButton: React.FC = () => {
         role="menu"
         aria-orientation="vertical"
         aria-labelledby="options-menu"
-      >
-        <div className="py-1" role="none">
-          <Link to="/signIn">
-            <button
-              className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-              role="menuitem"
-              onClick={() => handleLogout("popup")}
-            >
-              Sign out using Popup
-            </button>
-          </Link>
-          <Link to="/signIn">
-            <button
-              className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-              role="menuitem"
-              onClick={() => handleLogout("redirect")}
-            >
-              Sign out using Redirect
-            </button>
-          </Link>
-        </div>
-      </div>
+      ></div>
     </div>
   );
 };

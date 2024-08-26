@@ -10,7 +10,7 @@ import { msalConfig } from "./configuration/AuthConfig.tsx";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import SignInPage from "./components/SignInPage.tsx";
 import {
-  AuthenticatedTemplate,
+  // AuthenticatedTemplate,
   UnauthenticatedTemplate,
 } from "@azure/msal-react";
 
@@ -22,15 +22,15 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
       <MsalProvider instance={msalInstance}>
         <Routes>
           <Route
-            path="/"
+            path="/account"
             element={
-              <AuthenticatedTemplate>
-                <App />
-              </AuthenticatedTemplate>
+              // <AuthenticatedTemplate>
+              <App />
+              // </AuthenticatedTemplate>
             }
           />
           <Route
-            path="/signIn"
+            path="/"
             element={
               <UnauthenticatedTemplate>
                 <SignInPage children />

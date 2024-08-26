@@ -6,12 +6,20 @@ interface ProfileDataProps {
     surname: string;
     userPrincipalName: string;
     id: string;
+    profileImage?: string; // Added to hold the user's profile image
   };
 }
 
 export const ProfileData: React.FC<ProfileDataProps> = ({ graphData }) => {
   return (
-    <div id="profile-div" className=" flex flex-col z-1000">
+    <div id="profile-div" className="flex flex-col items-center space-y-4">
+      {graphData.profileImage && (
+        <img
+          src={graphData.profileImage}
+          alt={`${graphData.givenName} ${graphData.surname}`}
+          className="rounded-full w-24 h-24 mb-4"
+        />
+      )}
       <p>
         <strong>First Name: </strong> {graphData.givenName}
       </p>
@@ -21,9 +29,9 @@ export const ProfileData: React.FC<ProfileDataProps> = ({ graphData }) => {
       <p>
         <strong>Email: </strong> {graphData.userPrincipalName}
       </p>
-      <p>
+      {/* <p>
         <strong>Id: </strong> {graphData.id}
-      </p>
+      </p> */}
     </div>
   );
 };
