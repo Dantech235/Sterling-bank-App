@@ -33,7 +33,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
             path="/"
             element={
               <UnauthenticatedTemplate>
-                <SignInPage children />
+                <SignInPage />
               </UnauthenticatedTemplate>
             }
           />

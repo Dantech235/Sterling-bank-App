@@ -1,16 +1,12 @@
-import React, { ReactNode } from "react";
+import React from "react";
 import Sterlinglogo from "../assets/svg-files/Sterling-Logo.svg";
-
 import { useIsAuthenticated } from "@azure/msal-react";
 import { SignOutButton } from "./utils/SignOutButton";
 import { SignInButton } from "./utils/SignInButton";
 
-interface HeaderProps {
-  children: ReactNode;
-}
-
-const SignInPage: React.FC<HeaderProps> = () => {
+const SignInPage: React.FC = () => {
   const isAuthenticated = useIsAuthenticated();
+
   return (
     <div className="flex flex-col justify-center items-center bg-gradient-to-r from-gray-700 via-gray-900 to-black min-h-screen">
       {/* Header Section */}
@@ -22,41 +18,19 @@ const SignInPage: React.FC<HeaderProps> = () => {
         </div>
       </div>
 
-      {/* Login Container */}
-      <div className="bg-white/80 rounded-lg shadow-lg flex flex-col justify-center items-center p-8 w-full max-w-md mt-20 md:mt-28">
-        <h2 className="text-3xl font-bold text-gray-800 mb-6">Sign In</h2>
+      {/* Welcome Container */}
+      <div className="bg-white/80 rounded-lg shadow-lg flex flex-col justify-center items-center p-8 w-full max-w-md mt-20 md:mt-28 text-center">
+        <h2 className="text-4xl font-bold text-gray-800 mb-6">Welcome!</h2>
 
-        <p className="text-gray-600 text-center mb-8">
-          Welcome to the Private Area. Please enter your credentials to proceed
-          and access all services.
+        <p className="text-gray-600 text-lg mb-8">
+          We're glad to have you here. Click the button below to{" "}
+          {isAuthenticated ? "sign out" : "sign in"} and access all the
+          services.
         </p>
 
-        <form className="flex flex-col w-full space-y-6">
-          <div>
-            <label className="block text-gray-700 font-semibold mb-2">
-              Email
-            </label>
-            <input
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-              type="email"
-              required
-            />
-          </div>
-          <div>
-            <label className="block text-gray-700 font-semibold mb-2">
-              Password
-            </label>
-            <input
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-              type="password"
-              required
-            />
-          </div>
-
-          <button className="w-full py-2 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition duration-300">
-            {isAuthenticated ? <SignOutButton /> : <SignInButton />}
-          </button>
-        </form>
+        <button className="w-full py-2 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition duration-300">
+          {isAuthenticated ? <SignOutButton /> : <SignInButton />}
+        </button>
       </div>
     </div>
   );
