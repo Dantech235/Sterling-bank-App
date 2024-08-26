@@ -66,7 +66,7 @@ const App: React.FC = () => {
       className="flex flex-col min-h-screen"
       style={{ backgroundImage: `url(${bgImage})` }}
     >
-      <AppProvider value={{ show, setShow, handleClick, handleCloseModal }}>
+      <AppProvider>
         <Header show={show} />
 
         <ProfileContents />
