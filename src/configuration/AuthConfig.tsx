@@ -4,7 +4,7 @@ interface MsalConfig extends Configuration {
   auth: {
     clientId: string;
     authority: string;
-    redirectUri: string;
+    redirectUri?: string;
   };
   cache: {
     cacheLocation: "sessionStorage" | "localStorage";
@@ -21,12 +21,17 @@ interface MsalConfig extends Configuration {
   };
 }
 
+const redirectUri =
+  import.meta.env.MODE === "production"
+    ? import.meta.env.VITE_REDIRECT_URI_PRODUCTION
+    : import.meta.env.VITE_REDIRECT_URI_LOCAL;
+
 export const msalConfig: MsalConfig = {
   auth: {
     clientId: "8b8b59af-b3fb-4705-a26c-7da84f0a9565",
     authority:
       "https://login.microsoftonline.com/215b7ce2-5263-4593-a622-da030405d151",
-    redirectUri: " https://sterling-chatbot.netlify.app",
+    redirectUri: redirectUri,
   },
   cache: {
     cacheLocation: "sessionStorage",
